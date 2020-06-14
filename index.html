@@ -1,0 +1,371 @@
+<!doctype html>
+<html>
+	<head>
+		<!-- meta -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<!-- title -->
+		<title>Биматричные игры</title>
+
+		<!-- load style -->
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!--Fonts-->
+		<link rel="stylesheet" 
+			href="css/font-awesome-4.3.0/css/font-awesome.min.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<style>
+			.formula {
+				margin-bottom: 10px !important;
+			}
+			.offscreen {
+				clip: rect(1px 1px 1px 1px);
+				clip: rect(1px, 1px, 1px, 1px);
+				height: 1px;
+				overflow: hidden;
+				position: absolute;
+				white-space: nowrap;
+				width: 1px;
+			}
+			.offscreen:focus {
+				position: relative;
+				clip: auto;
+				width: auto;
+				height: auto;
+				overflow: auto;
+			}
+			.left {
+				float: left;
+				margin-left: 60px;
+			}
+			.right {
+				float: right;
+				margin-right: 60px;
+			}
+			.clear {
+				clear: both;
+			}
+			.reveal table.tic-toe {
+				border-collapse: separate !important;
+			}
+			td {
+				width: 40px;
+				height: 40px;
+				text-align: center !important;
+			}
+			td:nth-child(2) {
+				border-left: 1px solid white;
+				border-right: 1px solid white;
+			}
+
+		</style>
+	</head>
+	<body>
+		<div class="reveal">
+			<!-- Кнопка для включения и отключения субтитр -->
+			<div class="chalkboard-button" id="toggle-chalkboard" 
+				style="position: fixed; z-index: 30; font-size: 22px;
+				left: 60px; bottom: 31px;" >
+				<a href="#" id="noteswitch" title="Включение/отключение
+					заметок к слайду">
+					<i class="fa fa-sticky-note" aria-label="
+					Заметки к слайду"></i>
+				</a>
+			</div>
+
+			<div class="slides">
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						# Биматричные игры
+
+						Note:
+						Биматричные игры
+					</script>
+				</section>
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						Бескоалиционная конечная игра двух игроков, то есть игра парная, с конечным числом стратегий у каждого игрока называется биматричной. 
+						
+						Note:
+					</script>
+				</section>
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						<p style="font-size:28px">Формализованное описание биматричной игры $\Gamma$ определяется следующим образом: 
+						$ \Gamma=\{I,S,H\}$, где $I=\{1,2\}$ - множество игроков; $S=S_{1}\times S_{2}$ - множество ситуаций, 
+						причем $S_{1}=\{s_{1}^{\left(1\right)},s_{1}^{\left(2\right)},...,s_{1}^{\left(m\right)}\}, S_{2}=\{s_{2}^{\left(1\right)},s_{2}^{\left(2\right)},...,s_{2}^{\left(n\right)}\}$ 
+						- множества стратегий игрока 1 и 2 соответственно; функция выигрышей игроков 
+						$H=\left(H_{1},H_{2}\right):S \rightarrow R^2, H_{1}\left(s_{ij}\right)=a_{ij}, H_{2}\left(s_{ij}\right)=b_{ij}$ 
+						- функции выигрышей игрока 1 и 2 соответственно, $i=1,2,...,m; j=1,2,...,n;s_{ij}=\left(s_{1}^{\left(i\right)},s_{2}^{\left(j\right)}\right)$ 
+						- ситуация, образованная стратегией $s_{i}^{\left(i\right)}$ игрока 1 и стратегей $s_{i}^{\left(j\right)}$ игрока 2.
+						</p>
+						
+						Note:
+					</script>
+				</section>
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						Выигрыши каждого игрока можно задать отдельно соответствующими платежными матрицами:
+						
+
+						$$
+						A = \left(
+						\begin{array}{ccc}
+						a_{11} & \ldots & a_{1n}\\
+						\vdots & \ddots & \vdots\\
+						a_{m1} & \ldots & a_{mn}
+						\end{array}
+						\right), B = \left(
+						\begin{array}{ccc}
+						b_{11} & \ldots & b_{1n}\\
+						\vdots & \ddots & \vdots\\
+						b_{m1} & \ldots & b_{mn}
+						\end{array}
+						\right)
+						$$
+						
+						Note:
+					</script>
+				</section>
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						Cитуация $(s_{1}^{(i^{\times})}, s_{2}^{(j^{\times})})$ называется ситуацией равновесия по Нэшу в биматричной игре $\Gamma$, 
+						если выполняются неравенста:
+						
+						 $a_{ij^{\times}} \leqslant a_{i^{\times} j^{\times}}$ для любых $i=1,2,...,m,$
+
+						 $b_{i^{\times}j} \leqslant b_{i^{\times} j^{\times}}$ для любых $j=1,2,...,n.$
+						
+						
+						Note:
+					</script>
+				</section>
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						Аналогично, если $s_{2}^{\left(1\right)}, s_{2}^{\left(2\right)},...,s_{2}^{\left(n\right)}$ - 
+						множество чистых стратегий второго игрока, то смешанная стратегия $\sigma_{2}$ игрока 2 определяется набором вероятностей $y_{1},y_{2},...,y_{n}$, 
+						где с вероятностью $y_{k}$ применяется стратегия $s_{2}^{\left(k\right)}$, причем $\sum\limits_{k=1}^{n} y_{k} = 1, 0\leqslant y_{k} \leqslant 1, k=1,2,...,n.$
+						
+						
+						Note:
+					</script>
+				</section>
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						Пусть $s_{1}^{\left(1\right)}, s_{1}^{\left(2\right)},...,s_{1}^{\left(m\right)}$ -  
+						множество чистых стратегий первого игрока. Смешанная стратегия игрока $\sigma_{1}$ игрока 1 определяется набором вероятностей $x_{1},x_{2},...,x_{m}$, 
+						где с вероятностью $x_{k}$ применяется стратегия $s_{1}^{\left(k\right)}$, причем $\sum\limits_{k=1}^{m} x_{k} = 1, 0\leqslant x_{k} \leqslant 1, k=1,2,...,m.$
+						
+						
+						Note:
+					</script>
+				</section>
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						Аналогично, если $s_{2}^{\left(1\right)}, s_{2}^{\left(2\right)},...,s_{2}^{\left(n\right)}$ - 
+						множество чистых стратегий второго игрока, то смешанная стратегия $\sigma_{2}$ игрока 2 определяется набором 
+						вероятностей $y_{1},y_{2},...,y_{n}$, где с вероятностью $y_{k}$ применяется стратегия $s_{2}^{\left(k\right)}$, 
+						причем $\sum\limits_{k=1}^{n} y_{k} = 1, 0\leqslant y_{k} \leqslant 1, k=1,2,...,n.$
+						
+						
+						Note:
+					</script>
+				</section>
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						Набор $\sigma = \left(\sigma_{1}, \sigma_{2}\right)$ смешанных стратегий игроков в игре $\Gamma$ называется ситуацией в смешанных стратегиях в этой игре.
+
+
+						Ситуация $\sigma = \left(\sigma_{1}, \sigma_{2}\right)$ в смешанных стратегиях игроков в игре $\Gamma$ называется ситуацией равновесия, 
+						если для каждого $i \in I$ выполняется $\overline{H}_{i}\left(\sigma|_{\sigma_{1}^{'}}\right) \leqslant \overline{H}_{i}\left(\sigma\right)$ для любых 
+						$\sigma_{i}^{'} \in \overline{S}_{i}$.
+						
+						
+						Note:
+					</script>
+				</section>
+			<section data-markdown data-separator-notes="^Note:" data-menu-title="Заключительный слайд">
+					<script type="text/template">
+						Спасибо за внимание
+						Note:
+						Спасибо за внимание
+					</script>
+					<span class="offscreen">
+						Конец презентации
+					</span>
+				</section>
+			</div>
+		</div>
+
+		<!-- load js -->
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+		<script src="js/lib.js"></script>
+		<!-- Библиотека для математики -->
+		<script src="lib/js/math.min.js"></script>
+		<!-- Библиотека для математики -->
+		<script src="lib/js/algebrite.bundle-for-browser.js"></script>
+		<!-- Библиотека для рисования графиков -->
+		<script src="lib/js/plotly.min.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				
+				// save slide
+				history: true,
+				slideNumber: true,
+				touch: true,
+
+				// show katex error
+				math: {
+					notificationsEnabled: true,
+				},
+
+           menu: {
+                side: 'left', //Расположение меню
+                numbers: true, //Нумерация слайдов
+                markers: true, //Маркер посещения
+                titleSelector: 'h1, h2, h3, h4, h5, h6', //Заголовки, отображаемые в меню
+                useTextContentForMissingTitles: true, //Если заголовка нет, то подставляем первые слова слайда
+                hideMissingTitles: false, //Если заголовка нет, то скрываем слайд из меню
+                transitions: true, //Установить меню анимации
+                openButton: true, //Скрыть кнопку меню
+                keyboard: true, //Открытие меню по кнопке m
+                // themes: [{
+                //     name: 'Black',
+                //     theme: 'css/theme/black.css'
+                // }, {
+                //     name: 'White',
+                //     theme: 'css/theme/white.css'
+                // }, {
+                //     name: 'League',
+                //     theme: 'css/theme/league.css'
+                // }, {
+                //     name: 'Sky',
+                //     theme: 'css/theme/sky.css'
+                // }, {
+                //     name: 'Beige',
+                //     theme: 'css/theme/beige.css'
+                // }, {
+                //     name: 'Simple',
+                //     theme: 'css/theme/simple.css'
+                // }, {
+                //     name: 'Serif',
+                //     theme: 'css/theme/serif.css'
+                // }, {
+                //     name: 'Blood',
+                //     theme: 'css/theme/blood.css'
+                // }, {
+                //     name: 'Night',
+                //     theme: 'css/theme/night.css'
+                // }, {
+                //     name: 'Moon',
+                //     theme: 'css/theme/moon.css'
+                // }, {
+                //     name: 'Solarized',
+                //     theme: 'css/theme/solarized.css'
+                // }],
+            },
+
+				// load dependencies
+				dependencies: [
+					{
+						// tex
+						src: 'plugin/math-katex/math-katex.js', 
+						async: true,
+						callback: () => {
+							// solve problem with katex 
+							let section = document.querySelectorAll('section script');
+								section.forEach( (item, i) => {
+									section[i].innerHTML = section[i].innerHTML
+										.replace(/\\/g,'\\\\')
+										.replace(/_/g,'\\_')
+										.replace(/\{/g,'\\\{')
+										.replace(/\}/g,'\\\}');
+							});
+						},
+					}, { 
+						//markdown
+						src: 'plugin/markdown/marked.js',
+					}, { 
+						src: 'plugin/markdown/markdown.js', 
+						async: true,
+					},{ 
+						//Menu
+						src: 'plugin/menu/menu.js',
+						async: true
+					},{ 
+						//notes
+						src: 'plugin/notes/notes.js', 
+						async: true
+					}, { 
+						// highlight syntax
+						src: 'plugin/highlight/highlight.js', 
+						async: true, 
+						callback: () => {
+							let code = document.querySelectorAll('code');
+							code.forEach ( (item, i) => {
+								code[i].innerHTML = code[i].innerHTML
+									.replace(/\\{/g,'{')
+									.replace(/\\}/g,'}');
+							});
+							hljs.initHighlightingOnLoad();
+						}
+					}
+				]
+			});
+			let showNodes = () => {
+				Reveal.configure({
+					//Навесим событие на клавишу D
+					//Покажим заметки
+					showNotes: (
+						Reveal.getConfig().showNotes ? 
+							false: true
+						)
+				});
+				return false;
+			}
+
+			//Запускаем программы только после полной загрузки
+			window.onload = () =>  {
+
+
+				//Открываем заметки или по кнопке или по клавише D
+				document.querySelector('#noteswitch').onclick = showNodes;
+				Reveal.configure({
+					keyboard: {
+						68: showNodes
+					}
+				});
+
+
+				//Делаем слайды инклюзивными, заменив заголовок
+				$('h3').each((i, j) => {$(i).html(`
+					<span class="offscreen"></span>
+						${$(i).text()}
+					<span class="offscreen"></span>
+				`)});
+				$('aside').after(`<span class="offscreen">
+				</span>`);
+
+			}
+		</script>
+	</body>
+</html>
