@@ -98,28 +98,14 @@
 				</section>
 				<section data-markdown data-separator-notes="^Note:">
 					<script type="text/template">
-						Бескоалиционная конечная игра двух игроков, то есть игра парная, с конечным числом стратегий у каждого игрока называется биматричной. 
+						Бескоалиционная конечная игра двух игроков, то есть игра, с конечным числом стратегий у каждого игрока называется биматричной. 
 						
 						Note:
 					</script>
-				</section>
+				</section>				
 				<section data-markdown data-separator-notes="^Note:">
 					<script type="text/template">
-						<p style="font-size:28px">Формализованное описание биматричной игры $\Gamma$ определяется следующим образом: 
-						$ \Gamma=\{I,S,H\}$, где $I=\{1,2\}$ - множество игроков; $S=S_{1}\times S_{2}$ - множество ситуаций, 
-						причем $S_{1}=\{s_{1}^{\left(1\right)},s_{1}^{\left(2\right)},...,s_{1}^{\left(m\right)}\}, S_{2}=\{s_{2}^{\left(1\right)},s_{2}^{\left(2\right)},...,s_{2}^{\left(n\right)}\}$ 
-						- множества стратегий игрока 1 и 2 соответственно; функция выигрышей игроков 
-						$H=\left(H_{1},H_{2}\right):S \rightarrow R^2, H_{1}\left(s_{ij}\right)=a_{ij}, H_{2}\left(s_{ij}\right)=b_{ij}$ 
-						- функции выигрышей игрока 1 и 2 соответственно, $i=1,2,...,m; j=1,2,...,n;s_{ij}=\left(s_{1}^{\left(i\right)},s_{2}^{\left(j\right)}\right)$ 
-						- ситуация, образованная стратегией $s_{i}^{\left(i\right)}$ игрока 1 и стратегей $s_{i}^{\left(j\right)}$ игрока 2.
-						</p>
-						
-						Note:
-					</script>
-				</section>
-				<section data-markdown data-separator-notes="^Note:">
-					<script type="text/template">
-						Выигрыши каждого игрока можно задать отдельно соответствующими платежными матрицами:
+						Таким образом, биматричную игру можно задать с помощью двух платежных матриц:
 						
 
 						$$
@@ -143,7 +129,15 @@
 				</section>
 				<section data-markdown data-separator-notes="^Note:">
 					<script type="text/template">
-						Cитуация $(s_{1}^{(i^{\times})}, s_{2}^{(j^{\times})})$ называется ситуацией равновесия по Нэшу в биматричной игре $\Gamma$, 
+						Процесс игры заключается в том, что первый игрок выбирает строку $i$, а второй игрок выбирает столбец $j$. После этого первый игрок получает сумму $a_{ij}$, а второй игрок - 
+						сумму $b_{ij}$. Каждый игрок хочет получить максимальный выигрыш.
+						
+						Note:
+					</script>
+				</section>
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						Cитуация $(i^{\times}, j^{\times})$ называется ситуацией равновесия по Нэшу в биматричной игре $\Gamma$, 
 						если выполняются неравенста:
 						
 						 $a_{ij^{\times}} \leqslant a_{i^{\times} j^{\times}}$ для любых $i=1,2,...,m,$
@@ -153,12 +147,11 @@
 						
 						Note:
 					</script>
-				</section>
+				</section>				
 				<section data-markdown data-separator-notes="^Note:">
 					<script type="text/template">
-						Аналогично, если $s_{2}^{\left(1\right)}, s_{2}^{\left(2\right)},...,s_{2}^{\left(n\right)}$ - 
-						множество чистых стратегий второго игрока, то смешанная стратегия $\sigma_{2}$ игрока 2 определяется набором вероятностей $y_{1},y_{2},...,y_{n}$, 
-						где с вероятностью $y_{k}$ применяется стратегия $s_{2}^{\left(k\right)}$, причем $\sum\limits_{k=1}^{n} y_{k} = 1, 0\leqslant y_{k} \leqslant 1, k=1,2,...,n.$
+						Смешанная стратегия $X$ игрока 1 определяется набором вероятностей $x_{1},x_{2},...,x_{m}$, 
+						$\sum\limits_{k=1}^{m} x_{k} = 1, 0\leqslant x_{k} \leqslant 1, k=1,2,...,m.$
 						
 						
 						Note:
@@ -166,9 +159,8 @@
 				</section>
 				<section data-markdown data-separator-notes="^Note:">
 					<script type="text/template">
-						Пусть $s_{1}^{\left(1\right)}, s_{1}^{\left(2\right)},...,s_{1}^{\left(m\right)}$ -  
-						множество чистых стратегий первого игрока. Смешанная стратегия игрока $\sigma_{1}$ игрока 1 определяется набором вероятностей $x_{1},x_{2},...,x_{m}$, 
-						где с вероятностью $x_{k}$ применяется стратегия $s_{1}^{\left(k\right)}$, причем $\sum\limits_{k=1}^{m} x_{k} = 1, 0\leqslant x_{k} \leqslant 1, k=1,2,...,m.$
+						Аналогично, смешанная стратегия $Y$ игрока 2 определяется набором 
+						вероятностей $y_{1},y_{2},...,y_{n}$, $\sum\limits_{k=1}^{n} y_{k} = 1, 0\leqslant y_{k} \leqslant 1, k=1,2,...,n.$
 						
 						
 						Note:
@@ -176,23 +168,14 @@
 				</section>
 				<section data-markdown data-separator-notes="^Note:">
 					<script type="text/template">
-						Аналогично, если $s_{2}^{\left(1\right)}, s_{2}^{\left(2\right)},...,s_{2}^{\left(n\right)}$ - 
-						множество чистых стратегий второго игрока, то смешанная стратегия $\sigma_{2}$ игрока 2 определяется набором 
-						вероятностей $y_{1},y_{2},...,y_{n}$, где с вероятностью $y_{k}$ применяется стратегия $s_{2}^{\left(k\right)}$, 
-						причем $\sum\limits_{k=1}^{n} y_{k} = 1, 0\leqslant y_{k} \leqslant 1, k=1,2,...,n.$
-						
-						
-						Note:
-					</script>
-				</section>
-				<section data-markdown data-separator-notes="^Note:">
-					<script type="text/template">
-						Набор $\sigma = \left(\sigma_{1}, \sigma_{2}\right)$ смешанных стратегий игроков в игре $\Gamma$ называется ситуацией в смешанных стратегиях в этой игре.
-
-
-						Ситуация $\sigma = \left(\sigma_{1}, \sigma_{2}\right)$ в смешанных стратегиях игроков в игре $\Gamma$ называется ситуацией равновесия, 
-						если для каждого $i \in I$ выполняется $\overline{H}_{i}\left(\sigma|_{\sigma_{1}^{'}}\right) \leqslant \overline{H}_{i}\left(\sigma\right)$ для любых 
-						$\sigma_{i}^{'} \in \overline{S}_{i}$.
+						Ситуация $(X^{\times}, Y^{\times})$ в смешанных стратегиях игроков называется ситуацией равновесия, 
+						если выполняются следующие условия:
+						$$
+						X^{\times}AY^{\times} \geqslant XAY^{\times}, \forall X
+						$$
+						$$
+						X^{\times}BY^{\times} \geqslant X^{\times}AY, \forall Y
+						$$
 						
 						
 						Note:
