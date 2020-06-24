@@ -98,14 +98,14 @@
 						Биматричные игры
 					</script>
 				</section>
-				<section data-markdown data-separator-notes="^Note:">
+				<section data-markdown data-separator-notes="^Note:" data-menu-title="Определение">
 					<script type="text/template">
 						Бескоалиционная конечная игра двух игроков, то есть игра, с конечным числом стратегий у каждого игрока называется биматричной. 
 						
 						Note:
 					</script>
 				</section>				
-				<section data-markdown data-separator-notes="^Note:">
+				<section data-markdown data-separator-notes="^Note:" data-menu-title="Платежные матрицы">
 					<script type="text/template">
 						Таким образом, биматричную игру можно задать с помощью двух платежных матриц:
 						
@@ -129,7 +129,7 @@
 						Note:
 					</script>
 				</section>
-				<section data-markdown data-separator-notes="^Note:">
+				<section data-markdown data-separator-notes="^Note:" data-menu-title="Процесс игры">
 					<script type="text/template">
 						Процесс игры заключается в том, что первый игрок выбирает строку $i$, а второй игрок выбирает столбец $j$. После этого первый игрок получает сумму $a_{ij}$, а второй игрок - 
 						сумму $b_{ij}$. Каждый игрок хочет получить максимальный выигрыш.
@@ -137,7 +137,7 @@
 						Note:
 					</script>
 				</section>
-				<section data-markdown data-separator-notes="^Note:">
+				<section data-markdown data-separator-notes="^Note:" data-menu-title="Чистые стратегии">
 					<script type="text/template">
 						Cитуация $(i^{\times}, j^{\times})$ называется ситуацией равновесия в чистых стратегиях в биматричной игре $\Gamma$, 
 						если выполняются неравенста:
@@ -150,7 +150,7 @@
 						Note:
 					</script>
 				</section>				
-				<section data-markdown data-separator-notes="^Note:">
+				<section data-markdown data-separator-notes="^Note:" data-menu-title="Стратегия Х">
 					<script type="text/template">
 						Смешанная стратегия $X$ игрока 1 определяется набором вероятностей $x_{1},x_{2},...,x_{m}$, 
 						$\sum\limits_{k=1}^{m} x_{k} = 1, 0\leqslant x_{k} \leqslant 1, k=1,2,...,m.$
@@ -159,7 +159,7 @@
 						Note:
 					</script>
 				</section>
-				<section data-markdown data-separator-notes="^Note:">
+				<section data-markdown data-separator-notes="^Note:" data-menu-title="Стратегия У">
 					<script type="text/template">
 						Аналогично, смешанная стратегия $Y$ игрока 2 определяется набором 
 						вероятностей $y_{1},y_{2},...,y_{n}$, $\sum\limits_{k=1}^{n} y_{k} = 1, 0\leqslant y_{k} \leqslant 1, k=1,2,...,n.$
@@ -168,7 +168,7 @@
 						Note:
 					</script>
 				</section>
-				<section data-markdown data-separator-notes="^Note:">
+				<section data-markdown data-separator-notes="^Note:" data-menu-title="Смешанные стратегии">
 					<script type="text/template">
 						Ситуация $(X^{\times}, Y^{\times})$ в смешанных стратегиях игроков называется ситуацией равновесия, 
 						если выполняются следующие условия:
@@ -187,7 +187,7 @@
 						Note:
 					</script>
 				</section>
-				<section data-markdown style="font-size: 34px;" data-separator-notes="^Note:">
+				<section data-markdown style="font-size: 34px;" data-separator-notes="^Note:" data-menu-title="Первая часть алгоритма">
 					<script type="text/template">
 						- Проверяем наличие решения в чистых стратегиях
 						- Если решения в чистых стратегиях нет, выполняем перебор всех квадратных подматриц, размерности $k \times k \text{, где } 2 \leqslant k \leqslant min\{m,n\}$
@@ -202,7 +202,7 @@
 						Note:
 					</script>
 				</section>
-				<section data-markdown style="font-size: 34px;" data-separator-notes="^Note:">
+				<section data-markdown style="font-size: 34px;" data-separator-notes="^Note:" data-menu-title="Вторая часть алгоритма">
 					<script type="text/template">
 						- Полученное решение системы проверяем на неотрицательность, а также на то, является ли оно ситуацией равновесия. Для этого проверяем выполняются ли следующие условия:
 
